@@ -28,7 +28,7 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -96,12 +96,7 @@
                     </ul>
                  </form>
             </div>
-            <div data-role="footer" data-theme="a">
-                <h4>Copyright 2015</h4>
-            </div>
-        </div>
-        <div data-role="page" id="deletePage" data-theme="e">
-        <div data-role="popup" id="popupDelete" data-overlay-theme="b" data-theme="e" data-dismissible="false" style="max-width:400px;">
+                    <div data-role="popup" id="popupDelete" data-overlay-theme="b" data-theme="e" data-dismissible="false" style="max-width:400px;">
             <div data-role="header" data-theme="a">
                 <h1>Delete Task?</h1>
             </div>
@@ -111,11 +106,20 @@
                 <a href="#" data-rel="back" data-direction="reverse"class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">Cancel</a>
                 <a href="#confirmBtn" data-transition="flow"class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" > Delete</a>
             </div>
+            <div data-role="footer" data-theme="a">
+                <h4>Copyright 2015</h4>
+            </div>
         </div>
-</div><!-- /popup delete page-->
+
+        </div><!-- /popup delete page-->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize(); //initializing app
+            
+        </script>
     </body>
 </html>

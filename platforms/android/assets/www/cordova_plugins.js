@@ -1,8 +1,30 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
+        "file": "plugins/com.okaybmd.cordova.plugin.datepicker/www/android/DatePicker.js",
+        "id": "com.okaybmd.cordova.plugin.datepicker.DatePicker",
+        "pluginId": "com.okaybmd.cordova.plugin.datepicker",
+        "clobbers": [
+            "datePicker"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-calendar/www/Calendar.js",
+        "id": "cordova-plugin-calendar.Calendar",
+        "pluginId": "cordova-plugin-calendar",
+        "clobbers": [
+            "Calendar"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-calendar/test/tests.js",
+        "id": "cordova-plugin-calendar.tests",
+        "pluginId": "cordova-plugin-calendar"
+    },
+    {
         "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
         "id": "cordova-plugin-camera.Camera",
+        "pluginId": "cordova-plugin-camera",
         "clobbers": [
             "Camera"
         ]
@@ -10,6 +32,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
         "id": "cordova-plugin-camera.CameraPopoverOptions",
+        "pluginId": "cordova-plugin-camera",
         "clobbers": [
             "CameraPopoverOptions"
         ]
@@ -17,6 +40,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-camera/www/Camera.js",
         "id": "cordova-plugin-camera.camera",
+        "pluginId": "cordova-plugin-camera",
         "clobbers": [
             "navigator.camera"
         ]
@@ -24,6 +48,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-camera/www/CameraPopoverHandle.js",
         "id": "cordova-plugin-camera.CameraPopoverHandle",
+        "pluginId": "cordova-plugin-camera",
         "clobbers": [
             "CameraPopoverHandle"
         ]
@@ -31,6 +56,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-contacts/www/contacts.js",
         "id": "cordova-plugin-contacts.contacts",
+        "pluginId": "cordova-plugin-contacts",
         "clobbers": [
             "navigator.contacts"
         ]
@@ -38,6 +64,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-contacts/www/Contact.js",
         "id": "cordova-plugin-contacts.Contact",
+        "pluginId": "cordova-plugin-contacts",
         "clobbers": [
             "Contact"
         ]
@@ -45,6 +72,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-contacts/www/ContactAddress.js",
         "id": "cordova-plugin-contacts.ContactAddress",
+        "pluginId": "cordova-plugin-contacts",
         "clobbers": [
             "ContactAddress"
         ]
@@ -52,6 +80,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-contacts/www/ContactError.js",
         "id": "cordova-plugin-contacts.ContactError",
+        "pluginId": "cordova-plugin-contacts",
         "clobbers": [
             "ContactError"
         ]
@@ -59,6 +88,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-contacts/www/ContactField.js",
         "id": "cordova-plugin-contacts.ContactField",
+        "pluginId": "cordova-plugin-contacts",
         "clobbers": [
             "ContactField"
         ]
@@ -66,6 +96,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-contacts/www/ContactFindOptions.js",
         "id": "cordova-plugin-contacts.ContactFindOptions",
+        "pluginId": "cordova-plugin-contacts",
         "clobbers": [
             "ContactFindOptions"
         ]
@@ -73,6 +104,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-contacts/www/ContactName.js",
         "id": "cordova-plugin-contacts.ContactName",
+        "pluginId": "cordova-plugin-contacts",
         "clobbers": [
             "ContactName"
         ]
@@ -80,6 +112,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-contacts/www/ContactOrganization.js",
         "id": "cordova-plugin-contacts.ContactOrganization",
+        "pluginId": "cordova-plugin-contacts",
         "clobbers": [
             "ContactOrganization"
         ]
@@ -87,6 +120,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-contacts/www/ContactFieldType.js",
         "id": "cordova-plugin-contacts.ContactFieldType",
+        "pluginId": "cordova-plugin-contacts",
         "merges": [
             ""
         ]
@@ -94,6 +128,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-device/www/device.js",
         "id": "cordova-plugin-device.device",
+        "pluginId": "cordova-plugin-device",
         "clobbers": [
             "device"
         ]
@@ -101,6 +136,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-email/www/email_composer.js",
         "id": "cordova-plugin-email.EmailComposer",
+        "pluginId": "cordova-plugin-email",
         "clobbers": [
             "cordova.plugins.email",
             "plugin.email"
@@ -109,6 +145,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
         "id": "cordova-plugin-statusbar.statusbar",
+        "pluginId": "cordova-plugin-statusbar",
         "clobbers": [
             "window.StatusBar"
         ]
@@ -116,11 +153,21 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-whitelist/whitelist.js",
         "id": "cordova-plugin-whitelist.whitelist",
+        "pluginId": "cordova-plugin-whitelist",
         "runs": true
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
-{}
+{
+    "com.okaybmd.cordova.plugin.datepicker": "1.3.7",
+    "cordova-plugin-calendar": "4.4.5",
+    "cordova-plugin-camera": "1.2.0",
+    "cordova-plugin-contacts": "1.1.0",
+    "cordova-plugin-device": "1.1.0",
+    "cordova-plugin-email": "1.0.0",
+    "cordova-plugin-statusbar": "2.0.0",
+    "cordova-plugin-whitelist": "1.2.0"
+}
 // BOTTOM OF METADATA
 });

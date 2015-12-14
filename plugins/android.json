@@ -7,6 +7,12 @@
         "files": {}
     },
     "installed_plugins": {
+        "com.okaybmd.cordova.plugin.datepicker": {
+            "PACKAGE_NAME": "com.helenburgess.ITE528A1"
+        },
+        "cordova-plugin-calendar": {
+            "PACKAGE_NAME": "com.helenburgess.ITE528A1"
+        },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.helenburgess.ITE528A1"
         },

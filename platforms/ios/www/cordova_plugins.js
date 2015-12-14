@@ -1,6 +1,27 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
+        "file": "plugins/com.okaybmd.cordova.plugin.datepicker/www/ios/DatePicker.js",
+        "id": "com.okaybmd.cordova.plugin.datepicker.DatePicker",
+        "pluginId": "com.okaybmd.cordova.plugin.datepicker",
+        "clobbers": [
+            "datePicker"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-calendar/www/Calendar.js",
+        "id": "cordova-plugin-calendar.Calendar",
+        "pluginId": "cordova-plugin-calendar",
+        "clobbers": [
+            "Calendar"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-calendar/test/tests.js",
+        "id": "cordova-plugin-calendar.tests",
+        "pluginId": "cordova-plugin-calendar"
+    },
+    {
         "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
         "id": "cordova-plugin-camera.Camera",
         "pluginId": "cordova-plugin-camera",
@@ -30,15 +51,6 @@ module.exports = [
         "pluginId": "cordova-plugin-camera",
         "clobbers": [
             "CameraPopoverHandle"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-email/www/email_composer.js",
-        "id": "cordova-plugin-email.EmailComposer",
-        "pluginId": "cordova-plugin-email",
-        "clobbers": [
-            "cordova.plugins.email",
-            "plugin.email"
         ]
     },
     {
@@ -138,6 +150,15 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-email/www/email_composer.js",
+        "id": "cordova-plugin-email.EmailComposer",
+        "pluginId": "cordova-plugin-email",
+        "clobbers": [
+            "cordova.plugins.email",
+            "plugin.email"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
         "id": "cordova-plugin-statusbar.statusbar",
         "pluginId": "cordova-plugin-statusbar",
@@ -149,12 +170,14 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-whitelist": "1.2.0",
+    "com.okaybmd.cordova.plugin.datepicker": "1.3.7",
+    "cordova-plugin-calendar": "4.4.5",
     "cordova-plugin-camera": "1.2.0",
-    "cordova-plugin-email": "1.0.0",
     "cordova-plugin-contacts": "1.1.0",
     "cordova-plugin-device": "1.1.0",
-    "cordova-plugin-statusbar": "2.0.0"
+    "cordova-plugin-email": "1.0.0",
+    "cordova-plugin-statusbar": "2.0.0",
+    "cordova-plugin-whitelist": "1.2.0"
 }
 // BOTTOM OF METADATA
 });

@@ -46,5 +46,22 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-calendar": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-calendar"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.okaybmd.cordova.plugin.datepicker": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/okaybmd/cordova-plugin-datepicker",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

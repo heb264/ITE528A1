@@ -6,6 +6,8 @@
     <dict>
       <key>NSAllowsArbitraryLoads</key>
       <true/>
+      <key>NSExceptionDomains</key>
+      <dict/>
     </dict>
     <key>CFBundleDevelopmentRegion</key>
     <string>English</string>
@@ -64,9 +66,9 @@
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleVersion</key>
-    <string>0.0.1</string>
+    <string>2.2.3</string>
     <key>CFBundleShortVersionString</key>
-    <string>0.0.1</string>
+    <string>2.2.3</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>NSMainNibFile</key>

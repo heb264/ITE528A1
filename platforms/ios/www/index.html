@@ -28,22 +28,98 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
+        <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.min.css">
+        
+        <title>ITE528 A1: To-Do List</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+        <div data-role="page" id="home">
+            <div data-theme="a" data-role="header">
+                <h1>ITE528A1: To-Do </h1>
+                <a href="#formPage" data-role="button" data-icon="plus" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-right ui-icon-plus ui-btn-icon-left ui-btn-a">New</a>
+            </div>
+            <div data-role="content">
+                <div class="example-wrapper" data-iscroll>
+                    <ul data-role="listview" data-inset="true" id="taskList" data-theme="a">
+
+                    </ul>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="a">
+                <h4>Copyright 2015</h4>
             </div>
         </div>
+        <div data-role="page" id="formPage" data-theme="a">
+            <div data-theme="a" data-role="header">
+                <h1>To-Do: Task Detail </h1>
+                <a data-rel="back"  data-direction="reverse" data-icon"back"class="ui-btn ui-btn-inline ui-corner-all ui-icon-back ui-mini">Cancel</a>
+                <a id="saveBtn"data-rel="back" data-direction="reverse" data-icon="check" class="ui-btn ui-btn-inline ui-corner-all ui-mini">Save</a>
+            </div>
+            <div data-role="content">
+                <form action="" method="post" id="form">
+                    <ul data-role="listview" id="taskDetailsFields">
+                        <li data-role="list-divider">Task details:</li>
+                        <li data-role="fieldcontain">
+                            <label for="taskName">Name:</label>
+                            <input type="text" name="taskName" id="taskName" value="" />
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for="taskDescription">Description:</label>
+                            <textarea cols="40" rows="8" name="taskDescription"
+                                  id="taskDescription"></textarea>
+                        </li>
+
+                        <li data-role="fieldcontain">
+                            <label for="taskdone">Completed:</label>
+                            <select name="taskDone" id="taskDone" data-role="slider">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </li>
+                        <li data-role="fieldcontain">
+                              <label for="dueDteTime">Due Date &amp; Time:</label>
+                              <input type="text" data-role="date" name="dueDteTime" id="dueDteTime" value=""/>
+                        </li>
+                        <li><a id="takePhoto" class="ui-btn ui-btn-inline ui-corner-all ui-mini">Take Photo</a></li>
+                        <li><img src="" id="taskImage" width="150px" height="150px"/></li>
+                        <li data-role="list-divider">Actions</li>
+                        <li>
+                            <a href="#deletePage" data-rel="popup" data-position-to="window"  data-transition="pop" class="ui-btn ui-btn-inline ui-corner-all ui-icon-delete ui-btn-b ui-mini" id="deleteBtn">Delete Task...</a>
+                        </li>
+                    </ul>
+                 </form>
+            </div>
+                    <div data-role="popup" id="popupDelete" data-overlay-theme="b" data-theme="e" data-dismissible="false" style="max-width:400px;">
+            <div data-role="header" data-theme="a">
+                <h1>Delete Task?</h1>
+            </div>
+            <div role="main" class="ui-content">
+                <h3 class="ui-title">Are you sure you want to delete this Task?</h3>
+                <p>This action cannot be undone.</p>
+                <a href="#" data-rel="back" data-direction="reverse"class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">Cancel</a>
+                <a href="#confirmBtn" data-transition="flow"class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" > Delete</a>
+            </div>
+            <div data-role="footer" data-theme="a">
+                <h4>Copyright 2015</h4>
+            </div>
+        </div>
+
+        </div><!-- /popup delete page-->
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize(); //initializing app
+            
+        </script>
     </body>
 </html>

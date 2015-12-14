@@ -1,10 +1,10 @@
-var taskListApp = function(){
+var taskListApp = {};
 	//setting function variables for the app
-	var tasks = [];
-	var currentTaskIndex= -1;
+	taskListApp.tasks = [];
+	taskListApp.curTaskIndex= -1;
 
 	//loading tasks by checking if any tasks are stored. if not create new locaStorage
-	var loadTasks = function(){
+	taskListApp.loadTasks = function(event){
 	    if(locaStorage){
 	    var storedTasks = locaStorage["tasks"];
 	      if(!storedTasks){
@@ -16,12 +16,23 @@ var taskListApp = function(){
 	};
 
 	//syncing local storage
-	var syncStorage = function(){
+	taskListApp.syncStorage = function(event){
     	localStorage['tasks'] = JSON.stringify(tasks);
   	};
 
+  	taskListApp.dueDate = function(){
+  		var options = {
+  			date: new Date(),
+  			mode: 'datetime',
+
+  		};
+  		$('#dueDteTime').datePicker.show(options, function(date){
+
+  		});
+  	};
+
   	//display tasks
-  	var displayTasks = function(){
+  	taskListApp.displayTasks = function(){
   		//creating tap handler
     	var createTapHandler = function(currentIndex){
         	taskListApp.setCurrentTask(currentIndex);
@@ -30,13 +41,28 @@ var taskListApp = function(){
 	    var createMarkAsDoneTapHandler = function (currentIndex){
 	        taskListApp.toggleCurrentTaskAsDone(currentIndex);
 	     }
+
+	     var createImageTapHandler = function(currentIndex){
+	     	taskListApp.takePhoto(currentIndex)
+	     	navigator.camera.getPicture(onSuccess, onFail, {
+	        	quality: 50,
+	        	destinationType: Camera.destinationType.FILE_URI
+	      	});
+	    	function onSuccess(imageURI) {
+	        	var image = document.getElementById('taskImage');
+	        	image.src = imageURI;
+	      	}
+
+	      	function onFail(message) {
+	        	alert('Failed because: ' + message);
+	      	}
+	     }
         //make event handler work properly
         event.preventDefault();
 
-  	};
-
   	//using the camera to take an image to add to task.
     var takePhoto = function(){
+
       	navigator.camera.getPicture(onSuccess, onFail, {
         	quality: 50,
         	destinationType: Camera.destinationType.FILE_URI
@@ -81,14 +107,18 @@ var taskListApp = function(){
     }
       list.listview('refresh', true);
       $('#counter').html(task.length + ' tasks');
+  };
 
   	  //filling the form
-	  var fillForm = function(){
+	 taskListApp.fillForm = function(){
 	    var task = tasks[curTaskIndex];
 	    task.title=$('#taskName').val();
 	    task.description=$('#taskDescription').val();
 	    task.dueDate=$('#dueDteTime').val();
-	    task.photoURL=$('#taskImage').src;
+
+	    //adding image
+	    var taskImg =$('#taskImage');
+	    task.taskImg.src = createImageTapHandler(i);
 
 	  //changing the task completed slider depending on whether task is done or not
 	    var flip = $('#taskDone');
@@ -97,29 +127,29 @@ var taskListApp = function(){
 	    flip.slider('refresh');
 	  };
     //updating current task
-	    var updateCurrentTask = function(){
+	 taskListApp.updateCurrentTask = function(){
 	      var task= task[curTaskIndex];
 	      var task = tasks[curTaskIndex];
 	      task.title=$('#taskName').val();
 	      task.description=$('#taskDescription').val();
 	      task.done=($('#taskDone').val()==='yes');
-	      task.dueDate=$('#dueDteTime').val();
-	      task.photoURL=$('#taskImage').src;
+	      task.dueDate=$('#dueDteTime').val(datePicked);
 	    };
 
     //deleting task
-	    var deleteCurrentTask = function(){
+	 taskListApp.deleteCurrentTask = function(){
 	      tasks.splice(curTaskIndex, 1);
 	    };
 
     //toggling task completion
-	    var toggleTask = function(i){
+	 taskListApp.toggleTask = function(i){
 	    var task = tasks[i];
 	    task.done = !task.done;
 	    };
+
 	
 	//return functions for app
-  return{
+  taskListApp.return={
 	    Task: function(){
 	      this.title = 'new Task';
 	      this.description = 'empty description';
@@ -133,10 +163,12 @@ var taskListApp = function(){
 	      syncStorage();
 	      displayTasks();
 	    },
+
 	    init: function(){
-	      loadTasks();
-	      displayTasks();
-	    },
+	    	taskListApp.loadTasks(); //loading tasks
+            taskListApp.displayTasks(); //displaying tasks
+	    }
+
 	    displayTask: function(){
 	      fillForm();
 	    },
@@ -168,32 +200,34 @@ var taskListApp = function(){
 	      });
     	}
 	}();
-};
 
-$('#home').on('pageinit', function() {
-    taskListApp.init();
+$('#home').on('pagecreate', function() {
+    //taskListApp.init();
 
     $('#addTaskBtn').bind('tap', function(event, data) {
-        var newTask = new TaskListApp.Task();
+        var newTask = new TaskListApp.return.Task();
         console.dir(newTask);
-        taskListApp.addTask(newTask);
-    });
+        taskListApp.return.addTask(newTask);
+    	};
 });
 
-$('#formPage').on('pageinit', function() {
+$('#formPage').on('pagecreate', function() {
+	$('#dueDteTime')
     $('#saveBtn').bind('tap', function(event, data) {
-      taskListApp.saveTask();
+      	taskListApp..return.saveTask();
+  	}
+  });
         // This is required to avoid weird redirections
         event.preventDefault();
-    });
+    }
 });
 
 $('#formPage').on('pagebeforeshow', function () {
-  taskListApp.displayTask();
+  taskListApp.return.displayTask();
 });
 
-$('#deletePage').on('pageinit', function () {
+$('#deletePage').on('pagecreate', function () {
     $('#confirmBtn').bind('tap', function(event, data) {
-        taskListApp.removeTask();
-    });
+        taskListApp.return.removeTask();
+    }
 });
